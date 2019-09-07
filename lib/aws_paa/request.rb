@@ -3,16 +3,16 @@ require 'byebug'
 module AwsPaa
   class Request
     include AwsRequest
-    attr_accessor :client, :marketplace, :timestamp, :datestamp, :amzstamp, :resources, :service
-    attr_accessor :headers, :payload
+    attr_accessor :client, :marketplace, :resources, :payload, :service, :partner_type
+    attr_reader :partner_tag
 
-    def initialize(client:)
+    def initialize(client:, resources: nil)
       @client      = client
       @marketplace = client.marketplace
       @partner_tag = client.partner_tag
       @partner_type = 'Associates'
 
-      @resources   = [
+      @resources = resources || [
         "Images.Primary.Large",
         "ItemInfo.ContentInfo",
         "ItemInfo.ProductInfo",
