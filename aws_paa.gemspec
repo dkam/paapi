@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Dan Milne"]
   spec.email         = ["d@nmilne.com"]
 
-  spec.summary       = %q{Ruby API for Amazon's Product Advertising API v5}
+  spec.summary       = %q{Client library for Amazon's Product Advertising API v5}
   spec.homepage      = "https://github.com/dkam/aws_paa"
   spec.license       = "MIT"
 
@@ -30,6 +30,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "byebug"
+  spec.add_development_dependency "awesome_print"
 
-  spec.add_dependency 'httprb', '~> 0.1'
+  spec.add_dependency 'http', '~> 0.1'
+  spec.add_dependency 'aws-sigv4', '~> 1'
 end
