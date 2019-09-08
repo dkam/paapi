@@ -33,6 +33,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "awesome_print"
 
-  spec.add_dependency 'http', '~> 0.1'
+  spec.add_dependency 'http', '~> 4'
   spec.add_dependency 'aws-sigv4', '~> 1'
 end
