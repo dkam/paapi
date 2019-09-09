@@ -6,7 +6,13 @@ module Paapi
     attr_accessor :marketplace, :partner_tag
     attr_reader :partner_type, :access_key, :secret_key
 
-    def initialize(access_key:, secret_key:, marketplace:, partner_tag: nil, resources: nil, partner_type: 'Associates')
+    def initialize(access_key: Paapi.access_key,
+                   secret_key: Paapi.secret_key,
+                   marketplace: Paapi.marketplace || :us,
+                   partner_tag: Paapi.partner_tag,
+                   resources: nil,
+                   partner_type: 'Associates'
+                  )
       raise ArgumentError unless MARKETPLACES.keys.include?(marketplace.to_sym)
       @access_key = access_key
       @secret_key = secret_key

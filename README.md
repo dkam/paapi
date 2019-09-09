@@ -20,6 +20,25 @@ Or install it yourself as:
 
 ## Usage
 
+The library can be initialised with a Rails initializer such as
+
+```ruby
+Paapi.configure do |config|
+  config.access_key = 'your-access-key'
+  config.secret_key = 'your-secret-key'
+  config.partner_tag = 'your-tag'
+end
+```
+
+Configurable itemes:
+    * access_key
+    * secret_key
+    * partner_tag
+    * partner_type
+    * marketplace
+    * test_mode
+
+
 ```ruby
 require 'paapi'
 
