@@ -3,14 +3,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "paapi/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "paapi"
+  spec.name          = 'paapi'
   spec.version       = Paapi::VERSION
-  spec.authors       = ["Dan Milne"]
-  spec.email         = ["d@nmilne.com"]
+  spec.authors       = ['Dan Milne']
+  spec.email         = ['d@nmilne.com']
 
   spec.summary       = %q{Client library for Amazon's Product Advertising API v5}
-  spec.homepage      = "https://github.com/dkam/pappi"
-  spec.license       = "MIT"
+  spec.homepage      = 'https://github.com/dkam/pappi'
+  spec.license       = 'MIT'
 
   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
@@ -27,11 +27,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 2.0"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "minitest", "~> 5.0"
-  spec.add_development_dependency "byebug"
-  spec.add_development_dependency "awesome_print"
+  spec.add_development_dependency 'bundler', '~> 2.0'
+  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'minitest', '~> 5.0'
+  spec.add_development_dependency 'byebug', '~> 11'
+  spec.add_development_dependency "awesome_print", '~> 1.8'
 
   spec.add_dependency 'http', '~> 4'
   spec.add_dependency 'aws-sigv4', '~> 1'
