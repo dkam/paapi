@@ -18,6 +18,15 @@ module Paapi
         "ItemInfo.ProductInfo",
         "ItemInfo.Title",
         "ItemInfo.ExternalIds",
+        "Offers.Listings.Availability.Message",
+        "Offers.Listings.Condition",
+        "Offers.Listings.Condition.SubCondition",
+        "Offers.Listings.DeliveryInfo.IsAmazonFulfilled",
+        "Offers.Listings.DeliveryInfo.IsFreeShippingEligible",
+        "Offers.Listings.DeliveryInfo.IsPrimeEligible",
+        "Offers.Listings.MerchantInfo",
+        "Offers.Listings.Price",
+        "Offers.Listings.SavingBasis"
       ]
     end
 
@@ -35,8 +44,12 @@ module Paapi
       do_request(op: :get_variations, payload: payload)
     end
 
-    def search_items(keywords: )
-      payload = { Keywords: keywords, Resources:  @resources }
+    def search_items(keywords:, **options )
+      search_index = 'All'
+
+      # %i[Keywords Actor Artist Author Brand Title ]
+
+      payload = { Keywords: keywords, Resources:  @resources, ItemCount: 10, ItemPage: 1, SearchIndex: search_index }.merge(options)
 
       do_request(op: :search_items, payload: payload)
     end
