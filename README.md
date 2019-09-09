@@ -31,12 +31,12 @@ end
 ```
 
 Configurable itemes:
-    * access_key
-    * secret_key
-    * partner_tag
-    * partner_type
-    * marketplace
-    * test_mode
+ * access_key
+ * secret_key
+ * partner_tag
+ * partner_type
+ * marketplace
+ * test_mode
 
 
 ```ruby
