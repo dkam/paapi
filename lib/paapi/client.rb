@@ -1,6 +1,6 @@
 require 'http'
 
-module AwsPaa
+module Paapi
   class Client
     attr_accessor :marketplace, :partner_tag
     attr_reader :partner_type, :access_key, :secret_key

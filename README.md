@@ -1,8 +1,6 @@
 # AwsPaa
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/aws_paa`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+`aws_paa` is a slim wrapper around [Amazon's Product Advertising API 5.0](https://webservices.amazon.com/paapi5/documentation/).
 
 ## Installation
 
@@ -22,7 +20,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'aws_paa'
+
+client = AwsPaa::Client.new(access_key: ENV['access_key'], secret_key: ENV['secret_key'], marketplace: :au, partner_tag: ENV['partner_tag'])
+
+gi = client.get_items(item_ids: '1857231384')
+
+si = client.search_items(keywords: 'Harry Potter')
+
+gv = client.get_variations(asin: 'B00422MCUS')
+```
 
 ## Development
 
@@ -32,7 +40,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/aws_paa.
+Bug reports and pull requests are welcome on GitHub at https://github.com/dkam/aws_paa.
 
 ## License
 

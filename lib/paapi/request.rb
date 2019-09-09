@@ -1,6 +1,6 @@
 require 'byebug'
 
-module AwsPaa
+module Paapi
   class Request
     include AwsRequest
     attr_accessor :client, :marketplace, :resources, :payload, :service, :partner_type

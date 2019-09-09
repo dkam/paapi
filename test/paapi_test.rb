@@ -1,8 +1,8 @@
 require "test_helper"
 
-class AwsPaaTest < Minitest::Test
+class PaapiTest < Minitest::Test
   def test_that_it_has_a_version_number
-    refute_nil ::AwsPaa::VERSION
+    refute_nil ::Paapi::VERSION
   end
 
   def test_it_does_something_useful

@@ -1,6 +1,6 @@
 require 'json'
 
-module AwsPaa
+module Paapi
   class Response
     attr_reader :status, :data
     def initialize(response)

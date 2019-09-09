@@ -1,15 +1,15 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "aws_paa/version"
+require "paapi/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "aws_paa"
-  spec.version       = AwsPaa::VERSION
+  spec.name          = "paapi"
+  spec.version       = Paapi::VERSION
   spec.authors       = ["Dan Milne"]
   spec.email         = ["d@nmilne.com"]
 
   spec.summary       = %q{Client library for Amazon's Product Advertising API v5}
-  spec.homepage      = "https://github.com/dkam/aws_paa"
+  spec.homepage      = "https://github.com/dkam/pappi"
   spec.license       = "MIT"
 
   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
