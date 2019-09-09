@@ -1,4 +1,4 @@
-require "paapi/version"
+require 'paapi/version'
 
 require 'paapi/locales'
 require 'paapi/aws_request'

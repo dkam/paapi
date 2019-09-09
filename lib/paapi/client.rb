@@ -30,7 +30,6 @@ module Paapi
         @partner_tag = Paapi.partner_market.dig(_market) || @partner_tag
       end
     end
-    
 
     def get_items(item_ids:, **options)
       item_ids = Array(item_ids)
