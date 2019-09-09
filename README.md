@@ -20,6 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
+### Configuration
+
 The library can be initialised with a Rails initializer such as
 
 ```ruby
@@ -35,14 +37,38 @@ Configurable itemes:
  * secret_key
  * partner_tag
  * partner_type
- * marketplace
+ * market
+ * partner_market
  * test_mode
 
+Using the `partner_market` configuration item lets you set a hash of marketplaces and partner_tags.
+
+```ruby
+Paapi.configure do |config|
+  config.access_key = 'your-access-key'
+  config.secret_key = 'your-secret-key'
+  config.partner_market = {au: 'au_partner_tag', us: 'us_partner_tag'}
+end
+
+client = Paapi::Client.new(market: :au)
+
+client.partner_tag
+> 'au_partner_tag'
+
+client.market = :us
+
+client.partner_tag
+> 'us_partner_tag'
+```
+
+The full list of market keys is `au, br, ca, fr, de, in, it, jp, mx, es, tr, ae, uk, us`
+
+### Using the Paapi
 
 ```ruby
 require 'paapi'
 
-client = Paapi::Client.new(access_key: ENV['access_key'], secret_key: ENV['secret_key'], marketplace: :au, partner_tag: ENV['partner_tag'])
+client = Paapi::Client.new(access_key: ENV['access_key'], secret_key: ENV['secret_key'], market: :au, partner_tag: ENV['partner_tag'])
 
 gi = client.get_items(item_ids: '1857231384')
 

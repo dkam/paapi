@@ -3,39 +3,34 @@ require 'http'
 module Paapi
   class Client
     include AwsRequest
-    attr_accessor :marketplace, :partner_tag
-    attr_reader :partner_type, :access_key, :secret_key
+    attr_accessor :partner_tag, :marketplace, :resources
+    attr_reader :partner_type, :access_key, :secret_key, :market
 
-    def initialize(access_key: Paapi.access_key,
-                   secret_key: Paapi.secret_key,
-                   marketplace: Paapi.marketplace || :us,
-                   partner_tag: Paapi.partner_tag,
-                   resources: nil,
-                   partner_type: 'Associates'
+    def initialize(access_key:   Paapi.access_key,
+                   secret_key:   Paapi.secret_key,
+                   partner_tag:  Paapi.partner_tag,
+                   market:       Paapi.market || DEFAULT_MARKET,
+                   resources:    Paapi.resources || DEFAULT_RESOURCES,
+                   partner_type: DEFAULT_PARTNER_TYPE
                   )
-      raise ArgumentError unless MARKETPLACES.keys.include?(marketplace.to_sym)
+      raise ArgumentError unless MARKETPLACES.keys.include?(market.to_sym)
       @access_key = access_key
       @secret_key = secret_key
-      @marketplace = MARKETPLACES[marketplace.to_sym]
-      @partner_tag = partner_tag
       @partner_type = partner_type
-      @resources = resources || [
-        "Images.Primary.Large",
-        "ItemInfo.ContentInfo",
-        "ItemInfo.ProductInfo",
-        "ItemInfo.Title",
-        "ItemInfo.ExternalIds",
-        "Offers.Listings.Availability.Message",
-        "Offers.Listings.Condition",
-        "Offers.Listings.Condition.SubCondition",
-        "Offers.Listings.DeliveryInfo.IsAmazonFulfilled",
-        "Offers.Listings.DeliveryInfo.IsFreeShippingEligible",
-        "Offers.Listings.DeliveryInfo.IsPrimeEligible",
-        "Offers.Listings.MerchantInfo",
-        "Offers.Listings.Price",
-        "Offers.Listings.SavingBasis"
-      ]
+      @resources = resources unless resources.nil?
+
+      self.market = market
+      @partner_tag = partner_tag if !partner_tag.nil?      
     end
+
+    def market=(_market)
+      @market = _market
+      @marketplace = MARKETPLACES[market.to_sym]
+      if !Paapi.partner_market.nil?
+        @partner_tag = Paapi.partner_market.dig(_market) || @partner_tag
+      end
+    end
+    
 
     def get_items(item_ids:, **options)
       item_ids = Array(item_ids)
