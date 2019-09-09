@@ -3,7 +3,6 @@ require "paapi/version"
 require 'paapi/locales'
 require 'paapi/aws_request'
 require 'paapi/client'
-require 'paapi/request'
 require 'paapi/response'
 
 module Paapi

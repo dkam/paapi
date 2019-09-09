@@ -37,9 +37,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_print
+  awesome_print (~> 1.8)
   bundler (~> 2.0)
-  byebug
+  byebug (~> 11)
   minitest (~> 5.0)
   paapi!
   rake (~> 10.0)
