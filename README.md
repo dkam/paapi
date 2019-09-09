@@ -1,13 +1,13 @@
-# AwsPaa
+# Paapi
 
-`aws_paa` is a slim wrapper around [Amazon's Product Advertising API 5.0](https://webservices.amazon.com/paapi5/documentation/).
+`paapi` is a slim wrapper around [Amazon's Product Advertising API 5.0](https://webservices.amazon.com/paapi5/documentation/).
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'aws_paa'
+gem 'paapi'
 ```
 
 And then execute:
@@ -16,14 +16,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install aws_paa
+    $ gem install paapi
 
 ## Usage
 
 ```ruby
-require 'aws_paa'
+require 'paapi'
 
-client = AwsPaa::Client.new(access_key: ENV['access_key'], secret_key: ENV['secret_key'], marketplace: :au, partner_tag: ENV['partner_tag'])
+client = Paapi::Client.new(access_key: ENV['access_key'], secret_key: ENV['secret_key'], marketplace: :au, partner_tag: ENV['partner_tag'])
 
 gi = client.get_items(item_ids: '1857231384')
 
@@ -40,7 +40,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/dkam/aws_paa.
+Bug reports and pull requests are welcome on GitHub at https://github.com/dkam/paapi.
 
 ## License
 
