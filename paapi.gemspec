@@ -9,10 +9,8 @@ Gem::Specification.new do |spec|
   spec.email         = ['d@nmilne.com']
 
   spec.summary       = %q{Client library for Amazon's Product Advertising API v5}
-  spec.homepage      = 'https://github.com/dkam/pappi'
+  spec.homepage      = 'https://github.com/dkam/paapi'
   spec.license       = 'MIT'
-
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
