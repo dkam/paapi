@@ -14,20 +14,20 @@ module Paapi
       @partner_type = partner_type
     end
 
-    def get_items(item_ids: )[]
-      Request.new(client: self).get_items(item_ids: item_ids)
+    def get_items(item_ids:, **options)
+      Response.new(Request.new(client: self).get_items(item_ids: item_ids, **options))
     end
 
-    def get_variations(asin: )
-      Request.new(client: self).get_variations(asin: asin)
+    def get_variations(asin:, **options )
+      Response.new(Request.new(client: self).get_variations(asin: asin, **options))
     end
 
-    def search_items(keywords: )
-      Request.new(client: self).search_items(keywords: keywords)
+    def search_items(keywords:, **options )
+      Response.new(Request.new(client: self).search_items(keywords: keywords, **options))
     end
 
-    def get_browse_nodes
-      Request.new(client: self).get_browse_nodes(keywords: keywords)
+    def get_browse_nodes(keywords:, **options)
+      Response.new(Request.new(client: self).get_browse_nodes(keywords: keywords, **options))
     end
   end
 end
