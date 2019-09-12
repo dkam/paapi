@@ -2,6 +2,8 @@
 
 `paapi` is a slim wrapper around [Amazon's Product Advertising API 5.0](https://webservices.amazon.com/paapi5/documentation/).
 
+This gem is under development and currently incomplete.
+
 ## Installation
 
 Add this line to your application's Gemfile:
