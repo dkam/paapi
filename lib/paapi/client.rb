@@ -23,11 +23,11 @@ module Paapi
       @partner_tag = partner_tag if !partner_tag.nil?      
     end
 
-    def market=(_market)
-      @market = _market
+    def market=(a_market)
+      @market = a_market
       @marketplace = MARKETPLACES[market.to_sym]
       if !Paapi.partner_market.nil?
-        @partner_tag = Paapi.partner_market.dig(_market) || @partner_tag
+        @partner_tag = Paapi.partner_market.dig(a_market) || @partner_tag
       end
     end
 
