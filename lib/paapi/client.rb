@@ -58,9 +58,13 @@ module Paapi
       Response.new(res)
     end
 
-    def get_browse_nodes(keywords:, **options)
-      raise NotImplemented
-      #Response.new(Request.new(client: self).get_browse_nodes(keywords: keywords, **options))
+    def get_browse_nodes(browse_node_ids:, **options)
+      resources = ['BrowseNodes.Ancestor', 'BrowseNodes.Children']
+      payload = { BrowseNodeIds: Array(browse_node_ids), Resources:  @resources }.merge(options)
+
+      res = do_request(op: :get_browse_nodes, payload: payload)
+
+      Response.new(res)
     end
   end
 end
