@@ -13,10 +13,15 @@ module Paapi
   DEFAULT_MARKET = :us
   DEFAULT_RESOURCES = [
     'Images.Primary.Large',
+    'ItemInfo.ByLineInfo',
     'ItemInfo.ContentInfo',
-    'ItemInfo.ProductInfo',
-    'ItemInfo.Title',
     'ItemInfo.ExternalIds',
+    'ItemInfo.Features',
+    'ItemInfo.ManufactureInfo',
+    'ItemInfo.ProductInfo',
+    'ItemInfo.TechnicalInfo', # Includes format when Kindle
+    'ItemInfo.Title',
+    'ItemInfo.TradeInInfo',
     'Offers.Listings.Availability.Message',
     'Offers.Listings.Condition',
     'Offers.Listings.Condition.SubCondition',
