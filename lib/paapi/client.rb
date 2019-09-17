@@ -32,9 +32,7 @@ module Paapi
     end
 
     def get_items(item_ids:, **options)
-      item_ids = Array(item_ids)
-
-      payload = { ItemIds: item_ids, Resources:  @resources }
+      payload = { ItemIds: Array(item_ids), Resources:  @resources }
 
       res = do_request(op: :get_items, payload: payload)
 
