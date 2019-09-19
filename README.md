@@ -2,7 +2,7 @@
 
 `paapi` is a slim wrapper around [Amazon's Product Advertising API 5.0](https://webservices.amazon.com/paapi5/documentation/).
 
-This gem is under development and currently incomplete.
+This gem is under heavy development and currently incomplete.
 
 ## Installation
 
@@ -24,7 +24,7 @@ Or install it yourself as:
 
 ### Configuration
 
-The library can be initialised with a Rails initializer such as
+The library can be configured with an initializer. For Rails, create the file `config/initializers/paapi.rb`
 
 ```ruby
 Paapi.configure do |config|

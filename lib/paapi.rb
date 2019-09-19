@@ -81,4 +81,9 @@ module Paapi
     end
     alias_method :config, :configure
   end
+
+  def symbolize_keys(hash)
+    Hash[hash.map{|k,v| v.is_a?(Hash) ? [k.to_sym, symbolize_keys(v)] : [k.to_sym, v] }]
+  end
 end
+

@@ -36,20 +36,25 @@ module Paapi
 
       res = do_request(op: :get_items, payload: payload)
 
-      Response.new(res)
+      # Errors, ItemResults -> Items -> Item
+      return Response.new(res)
     end
 
     def get_variations(asin:, **options )
       payload = { ASIN: asin, Resources:  @resources }
 
       res = do_request(op: :get_variations, payload: payload)
-      Response.new(res)
+      
+      # Errors, VariationsResult->Items
+       Response.new(res)
     end
 
-    def search_items(keywords:, **options )
-      search_index = 'All'
 
-      # %i[Keywords Actor Artist Author Brand Title ]
+    # TODO: Currently we assume Keywords, but we need one of the follow: [Keywords Actor Artist Author Brand Title ]
+    def search_items(keywords: nil, **options )
+      raise ArgumentError("Missing keywords") unless (options.keys | SEARCH_PARAMS).length.positive?
+
+      search_index = options.dig(:SearchIndex) ||'All'
 
       payload = { Keywords: keywords, Resources:  @resources, ItemCount: 10, ItemPage: 1, SearchIndex: search_index }.merge(options)
 
