@@ -4,6 +4,8 @@
 
 This gem is under heavy development and currently incomplete.
 
+[![Build Status](https://travis-ci.org/dkam/paapi.svg?branch=master)](https://travis-ci.org/dkam/paapi)
+
 ## Installation
 
 Add this line to your application's Gemfile:
