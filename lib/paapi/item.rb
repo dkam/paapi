@@ -2,9 +2,9 @@ require 'nameable'
 
 module Paapi
   class Item
-    attr_accessor :raw
+    attr_accessor :json
     def initialize(data)
-      @raw = data
+      @json = data
     end
 
     def asin
@@ -102,7 +102,7 @@ module Paapi
     end
 
     def get(keys)
-      @raw.dig(*keys)
+      @json.dig(*keys)
     end
     
     def self.to_items(data)
