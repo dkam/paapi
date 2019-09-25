@@ -11,4 +11,5 @@ require 'paapi'
 # Pry.start
 
 require 'irb'
+load 'config.rb' if File.exist? 'config.rb'
 IRB.start(__FILE__)
