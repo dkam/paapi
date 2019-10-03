@@ -101,16 +101,12 @@ module Paapi
       get(%w{ItemInfo ManufactureInfo ItemPartNumber DisplayValue})
     end
 
-    def package
-      get(%w{ItemInfo TechnicalInfo Formats DisplayValues})
-    end
-
-    def part_number
-      get(%w{ItemInfo ManufactureInfo ItemPartNumber})
-    end
-
     def model
       get(%w{ItemInfo ManufactureInfo Model})
+    end
+
+    def package
+      get(%w{ItemInfo TechnicalInfo Formats DisplayValues})
     end
 
     def kindle?
