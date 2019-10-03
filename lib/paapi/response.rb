@@ -18,7 +18,11 @@ module Paapi
       @items = @items_data.map {|d| Item.new(d)}
 
     end
-  
+
+    def result_count
+      @json.dig('SearchResult', 'TotalResultCount')
+    end
+
     def snake_case(s)
       return s.downcase if s.match(/\A[A-Z]+\z/)
 

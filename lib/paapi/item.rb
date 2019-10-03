@@ -105,6 +105,14 @@ module Paapi
       get(%w{ItemInfo TechnicalInfo Formats DisplayValues})
     end
 
+    def part_number
+      get(%w{ItemInfo ManufactureInfo ItemPartNumber})
+    end
+
+    def model
+      get(%w{ItemInfo ManufactureInfo Model})
+    end
+
     def kindle?
       !package.nil? && package&.include?('Kindle eBook')
     end
