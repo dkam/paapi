@@ -14,13 +14,14 @@ module Paapi
                    partner_type: DEFAULT_PARTNER_TYPE
                   )
       raise ArgumentError unless MARKETPLACES.keys.include?(market.to_sym)
+
       @access_key = access_key
       @secret_key = secret_key
       @partner_type = partner_type
       @resources = resources unless resources.nil?
 
       self.market = market
-      @partner_tag = partner_tag if !partner_tag.nil?      
+      @partner_tag = partner_tag if !partner_tag.nil?
     end
 
     def market=(a_market)
@@ -44,11 +45,10 @@ module Paapi
       payload = { ASIN: asin, Resources:  @resources }
 
       res = do_request(op: :get_variations, payload: payload)
-      
+
       # Errors, VariationsResult->Items
        Response.new(res)
     end
-
 
     # TODO: Currently we assume Keywords, but we need one of the follow: [Keywords Actor Artist Author Brand Title ]
     def search_items(keywords: nil, **options )

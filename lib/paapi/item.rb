@@ -2,9 +2,13 @@ require 'nameable'
 
 module Paapi
   class Item
-    attr_accessor :json
+    attr_accessor :hash
     def initialize(data)
-      @json = data
+      @hash = data
+    end
+
+    def listings
+      get(['Offers', 'Listings']).map {|d| Listing.new(d)}
     end
 
     def asin
@@ -22,20 +26,20 @@ module Paapi
     def title
       get(%w{ItemInfo Title DisplayValue})
     end
-    
+
     def manufacturer
       get(%w{ItemInfo ByLineInfo Manufacturer DisplayValue})
     end
-    
+
     def publisher
       manufacturer
     end
-    
+
     def publication_date
       d = get(%w{ItemInfo ContentInfo PublicationDate DisplayValue})
       return d.nil? ? nil : Date.parse(d)
     end
-    
+
     def release_date
       d = get(%w{ItemInfo ProductInfo ReleaseDate DisplayValue})
       return d.nil? ? nil : Date.parse(d)
@@ -44,29 +48,33 @@ module Paapi
     def contributors
       get(%w{ItemInfo ByLineInfo Contributors})
     end
-    
+
     def contributors_of(kind)
-      contributors&.select { |e| e['Role'] == kind }&.map { |e| Nameable(e['Name'])}
+      contributors&.select { |e| e['Role'] == kind.to_s.titlecase }&.map { |e| Nameable(e['Name'])}
     end
-    
+
+    def actors
+      contributors_of 'Actor'
+    end
+
+    def artists
+      contributors_of 'Artist'
+    end
+
     def authors
       contributors_of 'Author'
     end
-    
+
     def illustrators
       contributors_of 'Illustrator'
-    end
-    
-    def actors
-      contributors_of 'Actor'
     end
 
     def narrators
       contributors_of 'Narrator'
     end
-    
+
     def publishers
-      contributors_of 'Publisher' 
+      contributors_of 'Publisher'
     end
 
     def release_date
@@ -84,7 +92,7 @@ module Paapi
     def features
       get(%w{ItemInfo Features DisplayValues})&.join(' ')
     end
-    
+
     def brand
       get(%w{ItemInfo ByLineInfo Brand DisplayValue})
     end
@@ -102,12 +110,12 @@ module Paapi
     end
 
     def get(keys)
-      @json.dig(*keys)
+      @hash.dig(*keys)
     end
-    
+
     def self.to_items(data)
       data.map {|d| Item.new(d)}
     end
-    
+
   end
 end

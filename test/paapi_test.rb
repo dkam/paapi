@@ -37,7 +37,6 @@ class PaapiTest < Minitest::Test
     c.market = :gb
     assert_equal orig_tag, c.partner_tag
 
-
   end
 
   def test_configuration_is_correctly_set_using
@@ -74,5 +73,4 @@ class PaapiTest < Minitest::Test
     assert_equal resources, c.resources
   end
 
- 
 end
