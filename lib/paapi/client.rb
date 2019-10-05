@@ -1,8 +1,9 @@
 require 'http'
+require 'aws-sigv4'
 
 module Paapi
   class Client
-    include AwsRequest
+
     attr_accessor :partner_tag, :marketplace, :resources
     attr_reader :partner_type, :access_key, :secret_key, :market
 
@@ -34,20 +35,12 @@ module Paapi
 
     def get_items(item_ids:, **options)
       payload = { ItemIds: Array(item_ids), Resources:  @resources }
-
-      res = do_request(op: :get_items, payload: payload)
-
-      # Errors, ItemResults -> Items -> Item
-      return Response.new(res)
+      request(op: :get_items, payload: payload)
     end
 
     def get_variations(asin:, **options )
       payload = { ASIN: asin, Resources:  @resources }
-
-      res = do_request(op: :get_variations, payload: payload)
-
-      # Errors, VariationsResult->Items
-       Response.new(res)
+      request(op: :get_variations, payload: payload)
     end
 
     # TODO: Currently we assume Keywords, but we need one of the follow: [Keywords Actor Artist Author Brand Title ]
@@ -58,18 +51,56 @@ module Paapi
 
       payload = { Keywords: keywords, Resources:  @resources, ItemCount: 10, ItemPage: 1, SearchIndex: search_index }.merge(options)
 
-      res = do_request(op: :search_items, payload: payload)
-
-      Response.new(res)
+      request(op: :search_items, payload: payload)
     end
 
     def get_browse_nodes(browse_node_ids:, **options)
-      resources = ['BrowseNodes.Ancestor', 'BrowseNodes.Children']
       payload = { BrowseNodeIds: Array(browse_node_ids), Resources:  @resources }.merge(options)
+      request(op: :get_browse_nodes, payload: payload)
+    end
+    
+    private
+    
+    def request(op:,  payload:)
+      raise ArguemntError unless Paapi::OPERATIONS.keys.include?(op)
 
-      res = do_request(op: :get_browse_nodes, payload: payload)
+      operation = OPERATIONS[op]
 
-      Response.new(res)
+      headers = {
+        'X-Amz-Target' => "com.amazon.paapi5.v1.ProductAdvertisingAPIv1.#{operation.target_name}",
+        'Content-Encoding' => 'amz-1.0',
+      }
+
+      default_payload = {
+        'PartnerTag' => partner_tag,
+        'PartnerType' => partner_type,
+        'Marketplace' => marketplace.site
+      }
+
+      payload = default_payload.merge(payload)
+
+      endpoint =  "https://#{marketplace.host}/paapi5/#{operation.endpoint_suffix}"
+
+      signer = Aws::Sigv4::Signer.new(
+        service: operation.service,
+        region: marketplace.region,
+        access_key_id: access_key,
+        secret_access_key: secret_key,
+        http_method: operation.http_method,
+        endpoint: marketplace.host
+      )
+
+      signature = signer.sign_request(http_method: operation.http_method, url: endpoint, headers: headers, body: payload.to_json)
+
+      headers['Host'] = marketplace.host
+      headers['X-Amz-Date'] = signature.headers['x-amz-date']
+      headers['X-Amz-Content-Sha256']= signature.headers['x-amz-content-sha256']
+      headers['Authorization'] = signature.headers['authorization']
+      headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      Response.new( HTTP.headers(headers).post(endpoint, json: payload ) )
     end
   end
+  
+  
 end

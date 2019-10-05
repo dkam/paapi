@@ -1,6 +1,5 @@
 require 'paapi/version'
 
-require 'paapi/aws_request'
 require 'paapi/client'
 require 'paapi/item'
 require 'paapi/response'
