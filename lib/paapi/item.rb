@@ -50,7 +50,7 @@ module Paapi
     end
 
     def contributors_of(kind)
-      contributors&.select { |e| e['Role'] == kind.to_s.titlecase }&.map { |e| Nameable(e['Name'])}
+      contributors&.select { |e| e['Role'] == kind.to_s.gsub(/([[:alpha:]]+)/) { |w| w.capitalize } }&.map { |e| Nameable(e['Name'])}
     end
 
     def actors
