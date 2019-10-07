@@ -77,10 +77,6 @@ module Paapi
       contributors_of 'Publisher'
     end
 
-    def release_date
-      get(%w{ItemInfo ReleaseDate})
-    end
-
     def eans
       get(%w{ItemInfo ExternalIds EANs DisplayValues})
     end
