@@ -34,12 +34,12 @@ module Paapi
     end
 
     def get_items(item_ids:, **options)
-      payload = { ItemIds: Array(item_ids), Resources:  @resources }
+      payload = { ItemIds: Array(item_ids), Resources:  @resources }.merge(options)
       request(op: :get_items, payload: payload)
     end
 
     def get_variations(asin:, **options )
-      payload = { ASIN: asin, Resources:  @resources }
+      payload = { ASIN: asin, Resources:  @resources }.merge(options)
       request(op: :get_variations, payload: payload)
     end
 
