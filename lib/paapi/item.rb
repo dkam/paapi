@@ -20,7 +20,7 @@ module Paapi
     end
 
     def image_url
-      get(%w{Images Primary Large Height URL})
+      get(%w{Images Primary Large URL})
     end
 
     def title
