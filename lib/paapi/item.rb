@@ -98,7 +98,7 @@ module Paapi
     end
 
     def model
-      get(%w{ItemInfo ManufactureInfo Model})
+      get(%w{ItemInfo ManufactureInfo Model DisplayValue})
     end
 
     def package
