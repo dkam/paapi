@@ -1,8 +1,13 @@
 require 'nameable'
+require 'forwardable'
 
 module Paapi
   class Item
+    extend Forwardable
     attr_accessor :hash
+
+    def_delegators :@hash, :dig
+
     def initialize(data)
       @hash = data
     end
