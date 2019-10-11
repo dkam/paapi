@@ -77,6 +77,18 @@ module Paapi
       contributors_of 'Publisher'
     end
 
+    def languages
+      get(%w{ItemInfo ContentInfo Languages DisplayValues})
+    end
+
+    def original_language
+      language&.find {|l| l['Type'] == 'Original Language' }&.dig('DisplayValue')
+    end
+
+    def published_language
+      language&.find {|l| l['Type'] == 'Published' }&.dig('DisplayValue')
+    end
+
     def eans
       get(%w{ItemInfo ExternalIds EANs DisplayValues})
     end
