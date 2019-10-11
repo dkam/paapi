@@ -87,11 +87,11 @@ module Paapi
     end
 
     def original_language
-      language&.find {|l| l['Type'] == 'Original Language' }&.dig('DisplayValue')
+      languages&.find {|l| l['Type'] == 'Original Language' }&.dig('DisplayValue')
     end
 
     def published_language
-      language&.find {|l| l['Type'] == 'Published' }&.dig('DisplayValue')
+      languages&.find {|l| l['Type'] == 'Published' }&.dig('DisplayValue')
     end
 
     def eans
