@@ -122,6 +122,26 @@ module Paapi
       get(%w{ItemInfo TechnicalInfo Formats DisplayValues})
     end
 
+    def height
+      data = get(%w{ItemInfo ProductInfo ItemDimensions Height})
+      [data.dig('DisplayValue'), data.dig('Unit')].join(' ')
+    end
+
+    def length
+      data = get(%w{ItemInfo ProductInfo ItemDimensions Length})
+      [data.dig('DisplayValue'), data.dig('Unit')].join(' ')
+    end
+
+    def width
+      data = get(%w{ItemInfo ProductInfo ItemDimensions Width})
+      [data.dig('DisplayValue'), data.dig('Unit')].join(' ')
+    end
+
+    def weight
+      data = get(%w{ItemInfo ProductInfo ItemDimensions Weight})
+      [data.dig('DisplayValue'), data.dig('Unit')].join(' ')
+    end
+
     def kindle?
       !package.nil? && package&.include?('Kindle eBook')
     end
