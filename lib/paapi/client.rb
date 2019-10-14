@@ -29,7 +29,7 @@ module Paapi
       @market = a_market
       @marketplace = MARKETPLACES[market.to_sym]
       if !Paapi.partner_market.nil?
-        @partner_tag = Paapi.partner_market.dig(a_market) || @partner_tag
+        @partner_tag = Paapi.partner_market.dig(a_market.to_sym) || @partner_tag
       end
     end
 
