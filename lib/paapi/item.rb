@@ -42,12 +42,12 @@ module Paapi
 
     def publication_date
       d = get(%w{ItemInfo ContentInfo PublicationDate DisplayValue})
-      return d.nil? ? nil : Date.parse(d)
+      return Date.parse(d) rescue nil
     end
 
     def release_date
       d = get(%w{ItemInfo ProductInfo ReleaseDate DisplayValue})
-      return d.nil? ? nil : Date.parse(d)
+      return Date.parse(d) rescue nil
     end
 
     def contributors
