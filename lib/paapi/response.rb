@@ -2,14 +2,14 @@ require 'json'
 
 module Paapi
   class Response
-    attr_reader :http_response, :json, :datas, :doc, :items
+    attr_reader :http_response, :hash, :datas, :doc, :items
 
     def initialize(response)
       @http_response = response
-      @json = JSON.parse(response.body.to_s)
+      @hash = JSON.parse(response.body.to_s)
 
-      @items_data = @json.dig('ItemsResult', 'Items')
-      @items_data ||= @json.dig('SearchResult', 'Items')
+      @items_data = @hash.dig('ItemsResult', 'Items')
+      @items_data ||= @hash.dig('SearchResult', 'Items')
       @items_data ||= []
 
       @items = @items_data.map {|d| Item.new(d)}
