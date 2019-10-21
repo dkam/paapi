@@ -13,7 +13,7 @@ module Paapi
     end
 
     def listings
-      get(['Offers', 'Listings']).map {|d| Listing.new(d)}
+      get(['Offers', 'Listings'])&.map {|d| Listing.new(d)}
     end
 
     def asin
