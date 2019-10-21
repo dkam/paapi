@@ -32,6 +32,10 @@ module Paapi
       get(%w{Price})
     end
     
+    def merchant
+      get(%w{MerchantInfo Name})
+    end
+
     def condition
       get(%w{Condition Value})
     end
