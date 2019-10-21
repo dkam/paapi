@@ -2,6 +2,7 @@ require 'paapi/version'
 
 require 'paapi/client'
 require 'paapi/item'
+require 'paapi/listing'
 require 'paapi/response'
 
 module Paapi

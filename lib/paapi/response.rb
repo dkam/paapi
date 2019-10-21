@@ -17,10 +17,7 @@ module Paapi
     end
 
     def result_count
-      @json.dig('SearchResult', 'TotalResultCount')
+      @hash.dig('SearchResult', 'TotalResultCount')
     end
-
-
-
   end
 end
