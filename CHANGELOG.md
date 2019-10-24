@@ -1,3 +1,6 @@
+## 0.0.8
+- Fix a bug when accessing an empty name via Item
+
 ## 0.0.7
 - Rename Item#json to Item#hash for consistency
 - Add offer / listing parsing

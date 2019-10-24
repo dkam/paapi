@@ -16,6 +16,7 @@ class ItemTest < Minitest::Test
           image_url: 'https://m.media-amazon.com/images/I/51B3xXr-ElL.jpg',
           eans: ["0889698357999", "6952669003752"],
           authors: [],
+          artists: [],
           brand: 'Funko',
           model: '35799'
         }
@@ -32,6 +33,7 @@ class ItemTest < Minitest::Test
           image_url: 'https://m.media-amazon.com/images/I/4107DRyNZpL.jpg',
           eans: ["0889698264679", "0615912346988"],
           authors: [],
+          artists: ['Funko Pop! Marvel:'],
           brand: 'Funko',
           model: '26467'
         }
@@ -44,7 +46,22 @@ class ItemTest < Minitest::Test
       items: [
         {
           asin: "1921878657",
-          authors: []
+          authors: [],
+          artists: [],
+          illustrators: []
+        }
+      ]
+    },
+    {
+      name: 'No Contributors',
+      response: 'get_item_no_contributor.json',
+      item_count: 1,
+      items: [
+        {
+          asin: "1921878657",
+          authors: [],
+          illustrators: [],
+          artists: []
         }
       ]
     }
