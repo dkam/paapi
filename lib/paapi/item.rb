@@ -51,18 +51,14 @@ module Paapi
     end
 
     def contributors
-      get(%w{ItemInfo ByLineInfo Contributors})
+      Array(get(%w{ItemInfo ByLineInfo Contributors}))
     end
 
     def contributors_of(kind)
-      contributors&.select { |e| e['Role'] == kind.to_s.gsub(/([[:alpha:]]+)/) { |w| w.capitalize } }&.map do |e|
+      contributors&.select { |e| e['Role'] == kind.to_s.gsub(/([[:alpha:]]+)/).each { |w| w.capitalize } }&.map do |e|
         r = e['Name']
         Nameable(r) unless r.to_s.empty?
-      end.compact
-    end
-
-    def contributors_of1(kind)
-      contributors&.select { |e| e['Role'] == kind.to_s.gsub(/([[:alpha:]]+)/) { |w| w.capitalize } }&.map { |e| Nameable(e['Name'])}
+      end&.compact
     end
 
     def actors
