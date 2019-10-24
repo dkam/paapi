@@ -36,6 +36,17 @@ class ItemTest < Minitest::Test
           model: '26467'
         }
       ]
+    },
+    {
+      name: 'Blank Name ',
+      response: 'get_item_no_author.json',
+      item_count: 1,
+      items: [
+        {
+          asin: "1921878657",
+          authors: []
+        }
+      ]
     }
   ]
   
