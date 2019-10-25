@@ -1,4 +1,3 @@
-require 'nameable'
 require 'forwardable'
 
 module Paapi
