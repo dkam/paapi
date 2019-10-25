@@ -64,6 +64,19 @@ class ItemTest < Minitest::Test
           artists: []
         }
       ]
+    },
+    {
+      name: 'Bad Contributors',
+      response: 'get_item_bad_contributor.json',
+      item_count: 1,
+      items: [
+        {
+          asin: "055357342X",
+          authors: ['.'],
+          illustrators: [],
+          artists: []
+        }
+      ]
     }
   ]
   
@@ -77,7 +90,7 @@ class ItemTest < Minitest::Test
       
       tc[:items].each_with_index do |item, idx|
         item.keys.each do |exp|
-          assert_equal item[exp], resp.items[idx].send(exp)
+          assert_equal item[exp], resp.items[idx].send(exp), "Dataset: #{tc[:name]}"
         end
       end
     end

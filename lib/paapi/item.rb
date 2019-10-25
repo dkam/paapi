@@ -55,10 +55,8 @@ module Paapi
     end
 
     def contributors_of(kind)
-      contributors&.select { |e| e['Role'] == kind.to_s.gsub(/([[:alpha:]]+)/).each { |w| w.capitalize } }&.map do |e|
-        r = e['Name']
-        Nameable(r) unless r.to_s.empty?
-      end&.compact
+      kind = kind.to_s.gsub(/([[:alpha:]]+)/) { |w| w.capitalize }
+      contributors.select { |e| e['Role'] == kind }&.map { |e| e.dig('Name') }&.reject {|n| n.to_s.empty?}
     end
 
     def actors

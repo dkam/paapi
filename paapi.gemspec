@@ -33,5 +33,4 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'http', '~> 4'
   spec.add_dependency 'aws-sigv4', '~> 1'
-  spec.add_dependency 'nameable', '~> 1'
 end
