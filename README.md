@@ -36,7 +36,7 @@ Paapi.configure do |config|
 end
 ```
 
-Configurable itemes:
+Configurable items:
  * access_key
  * secret_key
  * partner_tag
