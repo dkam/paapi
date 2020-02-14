@@ -10,6 +10,7 @@ module Paapi
 
       @items_data = @hash.dig('ItemsResult', 'Items')
       @items_data ||= @hash.dig('SearchResult', 'Items')
+      @items_data ||= @hash.dig('VariationsResult', 'Items')
       @items_data ||= []
 
       @items = @items_data.map {|d| Item.new(d)}
