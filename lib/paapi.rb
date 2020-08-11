@@ -11,6 +11,7 @@ module Paapi
   SEARCH_PARAMS = %i[keywords actor, artist, author, brand title].freeze
   DEFAULT_PARTNER_TYPE = 'Associates'
   DEFAULT_MARKET = :us
+  DEFAULT_CONDITION  = 'Any'
   DEFAULT_RESOURCES = [
     'Images.Primary.Large',
     'ItemInfo.ByLineInfo',
@@ -72,6 +73,7 @@ module Paapi
                   :partner_type,
                   :market,
                   :partner_market,
+                  :condition,
                   :resources,
                   :test_mode
 

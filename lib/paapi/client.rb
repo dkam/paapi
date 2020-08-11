@@ -4,13 +4,14 @@ require 'aws-sigv4'
 module Paapi
   class Client
 
-    attr_accessor :partner_tag, :marketplace, :resources
+    attr_accessor :partner_tag, :marketplace, :resources, :condition
     attr_reader :partner_type, :access_key, :secret_key, :market
 
     def initialize(access_key:   Paapi.access_key,
                    secret_key:   Paapi.secret_key,
                    partner_tag:  Paapi.partner_tag,
                    market:       Paapi.market || DEFAULT_MARKET,
+                   condition:    Paapi.condition  || DEFAULT_CONDITION,
                    resources:    Paapi.resources || DEFAULT_RESOURCES,
                    partner_type: DEFAULT_PARTNER_TYPE
                   )
@@ -20,7 +21,7 @@ module Paapi
       @secret_key = secret_key
       @partner_type = partner_type
       @resources = resources unless resources.nil?
-
+      @condition = condition  
       self.market = market
       @partner_tag = partner_tag if !partner_tag.nil?
     end
@@ -72,6 +73,7 @@ module Paapi
       }
 
       default_payload = {
+        'Condition' => condition,
         'PartnerTag' => partner_tag,
         'PartnerType' => partner_type,
         'Marketplace' => marketplace.site
