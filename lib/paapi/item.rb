@@ -59,27 +59,31 @@ module Paapi
     end
 
     def actors
-      contributors_of 'Actor'
+      contributors_of 'actor'
     end
 
     def artists
-      contributors_of 'Artist'
+      contributors_of 'artist'
     end
 
     def authors
-      contributors_of 'Author'
+      contributors_of 'author'
+    end
+
+    def director
+      contributors_of 'director'
     end
 
     def illustrators
-      contributors_of 'Illustrator'
+      contributors_of 'illustrator'
     end
 
     def narrators
-      contributors_of 'Narrator'
+      contributors_of 'narrator'
     end
 
     def publishers
-      contributors_of 'Publisher'
+      contributors_of 'publisher'
     end
 
     def languages
