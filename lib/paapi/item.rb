@@ -54,8 +54,8 @@ module Paapi
     end
 
     def contributors_of(kind)
-      kind = kind.to_s.gsub(/([[:alpha:]]+)/) { |w| w.capitalize }
-      contributors.select { |e| e['Role'] == kind }&.map { |e| e.dig('Name') }&.reject {|n| n.to_s.empty?}
+      kind = kind.to_s.gsub(/([[:alpha:]]+)/) { |w| w.downcase }
+      contributors.select { |e| e['RoleType'] == kind }&.map { |e| e.dig('Name') }&.reject {|n| n.to_s.empty?}
     end
 
     def actors
