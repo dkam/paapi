@@ -1,4 +1,3 @@
-#require 'http'
 require 'aws-sigv4'
 
 module Paapi
@@ -98,20 +97,19 @@ module Paapi
       headers['Authorization'] = signature.headers['authorization']
       headers['Content-Type'] = 'application/json; charset=utf-8'
 
-      #Response.new( HTTP.headers(headers).post(endpoint, json: payload ) )
+      Response.new( Client.post(url: endpoint, body: payload, headers: headers))
+    end
 
-      request = Net::HTTP::Post.new(endpoint)
+    def self.post(url:, body:, headers:)
+      uri = URI.parse(url)
+      request = Net::HTTP::Post.new(uri)
       request.content_type = 'application/json; charset=UTF-8'
       headers.each { |k, v| request[k] = v }
       request.body = body
       req_options = { use_ssl: uri.scheme == 'https' }
-
       Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
         http.request(request)
       end
-
     end
   end
-  
-  
 end
