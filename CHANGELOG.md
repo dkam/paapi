@@ -1,3 +1,6 @@
+## 0.1.2
+- Use Contributor RoleType, rather than Role.  RoleType uses lowercase, rather than capitalised. 
+
 ## 0.1.0
 - Remove Nameable dependancy and return the data as the API returns it.
 
