@@ -8,8 +8,8 @@
           "Primary": {
             "Large": {
               "Height": 500,
-              "URL": "https://m.media-amazon.com/images/I/4107DRyNZpL.jpg",
-              "Width": 327
+              "URL": "https://m.media-amazon.com/images/I/41yp1zQdxqL.jpg",
+              "Width": 500
             }
           }
         },
@@ -24,7 +24,8 @@
               {
                 "Locale": "en_AU",
                 "Name": "Funko Pop! Marvel:",
-                "Role": "Artist"
+                "Role": "Artist",
+                "RoleType": "artist"
               }
             ],
             "Manufacturer": {
@@ -34,6 +35,16 @@
             }
           },
           "ContentInfo": {
+            "Languages": {
+              "DisplayValues": [
+                {
+                  "DisplayValue": "English",
+                  "Type": "Published"
+                }
+              ],
+              "Label": "Language",
+              "Locale": "en_AU"
+            },
             "PublicationDate": {
               "DisplayValue": "2018-04-04T00:00:01Z",
               "Label": "PublicationDate",
@@ -60,10 +71,9 @@
           },
           "Features": {
             "DisplayValues": [
-              "From Avengers Infinity War, Thanos, as a stylized POP vinyl from Funko!",
-              "Stylized collectable stands 3 ¾ inches tall, perfect for any Avengers Infinity War fan!",
-              "Collect and display all Avengers Infinity War POP! Vinyls!",
-              "Funko POP! is the 2017 Toy of the Year and People's Choice award winner"
+              "Stylized collectable stands 3 ¾ inches tall, perfect for any Avengers 3 fan!",
+              "Collect and display all, Avengers 3 Pop! Vinyl's!",
+              "Check out the other Avengers 3 figures from Funko!"
             ],
             "Label": "Features",
             "Locale": "en_AU"
@@ -78,6 +88,11 @@
               "DisplayValue": "26467",
               "Label": "Model",
               "Locale": "en_US"
+            },
+            "Warranty": {
+              "DisplayValue": "No Warranty",
+              "Label": "Warranty",
+              "Locale": "en_AU"
             }
           },
           "ProductInfo": {
@@ -92,15 +107,33 @@
               "Locale": "en_US"
             },
             "ItemDimensions": {
+              "Height": {
+                "DisplayValue": 3.75,
+                "Label": "Height",
+                "Locale": "en_AU",
+                "Unit": "Inches"
+              },
+              "Length": {
+                "DisplayValue": 2.5,
+                "Label": "Length",
+                "Locale": "en_AU",
+                "Unit": "Inches"
+              },
               "Weight": {
-                "DisplayValue": 0.85,
+                "DisplayValue": 1.873929227,
                 "Label": "Weight",
                 "Locale": "en_AU",
-                "Unit": "Kilograms"
+                "Unit": "Pounds"
+              },
+              "Width": {
+                "DisplayValue": 2.5,
+                "Label": "Width",
+                "Locale": "en_AU",
+                "Unit": "Inches"
               }
             },
             "ReleaseDate": {
-              "DisplayValue": "2018-03-03T00:00:01Z",
+              "DisplayValue": "2019-10-17T00:00:01Z",
               "Label": "ReleaseDate",
               "Locale": "en_US"
             },
@@ -116,7 +149,7 @@
             }
           },
           "Title": {
-            "DisplayValue": "FUNKO POP! Marvel: Avengers Infinity War - Thanos",
+            "DisplayValue": "Funko FUN26467 Action Figure",
             "Label": "Title",
             "Locale": "en_AU"
           }
@@ -134,19 +167,19 @@
                 "Value": "New"
               },
               "DeliveryInfo": {
-                "IsAmazonFulfilled": false,
-                "IsFreeShippingEligible": false,
-                "IsPrimeEligible": false
+                "IsAmazonFulfilled": true,
+                "IsFreeShippingEligible": true,
+                "IsPrimeEligible": true
               },
-              "Id": "wGlzfgGjBBliOSAG21fYMCH27rYsl4J4q7XnxRDHzyAg8wXkOtJYJV3XrAsR1zd8kkVI0sXgIB%2FGfjyncUv1N43Propx%2B8VnOndyVTyEM0T0%2Fbrd06MYbAgns8Vbs%2BhEePoX6WOKsIrnsVJOPa%2FLS%2FPuUlyyFluU",
+              "Id": "m4oBvLF80AQ1QcznanMQGoFQaAZPT4Zsdo55%2Bb0YB%2FZpO%2F5daaIdhiLUd89%2FkBrWURvZ%2B%2B716QfBjkN0WUUBJp7%2BccDF5ZMNUEzQMDnNPgHmprZ2S8HURd7hb9%2F%2FTS5R",
               "MerchantInfo": {
-                "Id": "A3A83J10WISLAT",
-                "Name": "SupportiveSolutions"
+                "Id": "ANEGB3WVEVKZB",
+                "Name": "Amazon AU"
               },
               "Price": {
-                "Amount": 17.99,
+                "Amount": 19.99,
                 "Currency": "AUD",
-                "DisplayAmount": "$17.99"
+                "DisplayAmount": "$19.99"
               },
               "ViolatesMAP": false
             }

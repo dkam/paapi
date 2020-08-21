@@ -54,32 +54,36 @@ module Paapi
     end
 
     def contributors_of(kind)
-      kind = kind.to_s.gsub(/([[:alpha:]]+)/) { |w| w.capitalize }
-      contributors.select { |e| e['Role'] == kind }&.map { |e| e.dig('Name') }&.reject {|n| n.to_s.empty?}
+      kind = kind.to_s.gsub(/([[:alpha:]]+)/) { |w| w.downcase }
+      contributors.select { |e| e['RoleType'] == kind }&.map { |e| e.dig('Name') }&.reject {|n| n.to_s.empty?}
     end
 
     def actors
-      contributors_of 'Actor'
+      contributors_of 'actor'
     end
 
     def artists
-      contributors_of 'Artist'
+      contributors_of 'artist'
     end
 
     def authors
-      contributors_of 'Author'
+      contributors_of 'author'
+    end
+
+    def director
+      contributors_of 'director'
     end
 
     def illustrators
-      contributors_of 'Illustrator'
+      contributors_of 'illustrator'
     end
 
     def narrators
-      contributors_of 'Narrator'
+      contributors_of 'narrator'
     end
 
     def publishers
-      contributors_of 'Publisher'
+      contributors_of 'publisher'
     end
 
     def languages
