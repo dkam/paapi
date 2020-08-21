@@ -28,9 +28,9 @@ class ItemTest < Minitest::Test
       item_count: 1,
       items: [
         {
-          title: "FUNKO POP! Marvel: Avengers Infinity War - Thanos",
+          title: "Funko FUN26467 Action Figure",
           asin: 'B079PQ7T6B',
-          image_url: 'https://m.media-amazon.com/images/I/4107DRyNZpL.jpg',
+          image_url: 'https://m.media-amazon.com/images/I/41yp1zQdxqL.jpg',
           eans: ["0889698264679", "0615912346988"],
           authors: [],
           artists: ['Funko Pop! Marvel:'],
@@ -60,19 +60,6 @@ class ItemTest < Minitest::Test
         {
           asin: "1921878657",
           authors: [],
-          illustrators: [],
-          artists: []
-        }
-      ]
-    },
-    {
-      name: 'Bad Contributors',
-      response: 'get_item_bad_contributor.json',
-      item_count: 1,
-      items: [
-        {
-          asin: "055357342X",
-          authors: ['.'],
           illustrators: [],
           artists: []
         }

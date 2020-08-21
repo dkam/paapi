@@ -2,9 +2,9 @@
 
 `paapi` is a slim wrapper around [Amazon's Product Advertising API 5.0](https://webservices.amazon.com/paapi5/documentation/).
 
-This gem is under heavy development and currently incomplete.
-
 [![Build Status](https://travis-ci.org/dkam/paapi.svg?branch=master)](https://travis-ci.org/dkam/paapi)
+
+If this gem doesn't meet your needs, try the [Vacumm gem](https://github.com/hakanensari/vacuum).
 
 ## Installation
 
@@ -67,7 +67,7 @@ client.partner_tag
 
 The full list of market keys is `au, br, ca, fr, de, in, it, jp, mx, es, tr, ae, uk, us`
 
-### Using the Paapi
+### Using Paapi
 
 ```ruby
 require 'paapi'
