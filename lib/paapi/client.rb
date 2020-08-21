@@ -107,8 +107,7 @@ module Paapi
       request.content_type = 'application/json; charset=UTF-8'
       headers.each { |k, v| request[k] = v }
       request.body = body.to_json
-      req_options = { use_ssl: uri.scheme == 'https' }
-      Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
         http.request(request)
       end
     end
