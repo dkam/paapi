@@ -1,4 +1,4 @@
-require 'http'
+#require 'http'
 require 'aws-sigv4'
 
 module Paapi
