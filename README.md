@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/dkam/paapi.svg?branch=master)](https://travis-ci.org/dkam/paapi)
 
-If this gem doesn't meet your needs, try the [Vacumm gem](https://github.com/hakanensari/vacuum).
+If this gem doesn't meet your needs, try the [Vacuum gem](https://github.com/hakanensari/vacuum).
 
 ## Installation
 
