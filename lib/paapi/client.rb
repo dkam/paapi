@@ -1,11 +1,12 @@
 require 'net/http'
 require 'aws-sigv4'
+require 'byebug'
 
 module Paapi
   class Client
 
     attr_accessor :partner_tag, :marketplace, :resources, :condition
-    attr_reader :partner_type, :access_key, :secret_key, :market
+    attr_reader :partner_type, :access_key, :secret_key, :market, :http
 
     def initialize(access_key:   Paapi.access_key,
                    secret_key:   Paapi.secret_key,
@@ -24,7 +25,8 @@ module Paapi
       @condition = condition  
       self.market = market
       @partner_tag = partner_tag if !partner_tag.nil?
-
+      
+      byebug
       #if defined?(HTTPX)
       #  @http = HTTPX.plugin(:persistent)
       #elsif defined?(HTTP)
@@ -72,7 +74,7 @@ module Paapi
     
     def request(op:,  payload:)
       raise ArguemntError unless Paapi::OPERATIONS.keys.include?(op)
-
+      
       operation = OPERATIONS[op]
 
       headers = {
@@ -108,13 +110,12 @@ module Paapi
       headers['Authorization'] = signature.headers['authorization']
       headers['Content-Type'] = 'application/json; charset=utf-8'
       
-      if defined?(HTTP)
-        Response.new( HTTP.headers(headers).post(endpoint, json: payload ) )
+      unless @http.nil?
+        Response.new( @http.headers(headers).post(endpoint, json: payload ) )
       else
         Response.new( Client.post(url: endpoint, body: payload, headers: headers))
       end
-      
-      Response.new(@http_client.headers(headers))
+
     end
 
     def self.post(url:, body:, headers:)
