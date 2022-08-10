@@ -111,7 +111,7 @@ module Paapi
       headers['Content-Type'] = 'application/json; charset=utf-8'
       
       unless @http.nil?
-        Response.new( @http.headers(headers).post(endpoint, json: payload ) )
+        Response.new( @http.with_headers(headers).post(endpoint, json: payload ) )
       else
         Response.new( Client.post(url: endpoint, body: payload, headers: headers))
       end
