@@ -1,6 +1,5 @@
 require 'net/http'
 require 'aws-sigv4'
-require 'byebug'
 
 module Paapi
   class Client
@@ -25,15 +24,7 @@ module Paapi
       @condition = condition  
       self.market = market
       @partner_tag = partner_tag if !partner_tag.nil?
-      
-      byebug
-      #if defined?(HTTPX)
-      #  @http = HTTPX.plugin(:persistent)
-      #elsif defined?(HTTP)
-        @http = HTTP::Client.new
-      #else
-      #  @http = nil
-      #end
+      @http = HTTP::Client.new
     end
 
     def market=(a_market)
