@@ -1,6 +1,5 @@
 require 'net/http'
 require 'aws-sigv4'
-require 'byebug'
 
 module Paapi
   class Client
@@ -72,7 +71,6 @@ module Paapi
     private
     
     def request(op:,  payload:)
-      byebug
       raise ArguemntError unless Paapi::OPERATIONS.keys.include?(op)
       
       operation = OPERATIONS[op]
