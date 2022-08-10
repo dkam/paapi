@@ -1,5 +1,6 @@
 require 'net/http'
 require 'aws-sigv4'
+require 'byebug'
 
 module Paapi
   class Client
@@ -24,7 +25,14 @@ module Paapi
       @condition = condition  
       self.market = market
       @partner_tag = partner_tag if !partner_tag.nil?
-      @http = HTTP::Client.new
+
+      if defined?(HTTPX)
+        @http = HTTPX.plugin(:persistent)
+      elsif defined?(HTTP)
+        @http = HTTP::Client.new
+      else
+        @http = nil
+      end
     end
 
     def market=(a_market)
@@ -64,6 +72,7 @@ module Paapi
     private
     
     def request(op:,  payload:)
+      byebug
       raise ArguemntError unless Paapi::OPERATIONS.keys.include?(op)
       
       operation = OPERATIONS[op]
