@@ -24,6 +24,14 @@ module Paapi
       @condition = condition  
       self.market = market
       @partner_tag = partner_tag if !partner_tag.nil?
+
+      #if defined?(HTTPX)
+      #  @http = HTTPX.plugin(:persistent)
+      #elsif defined?(HTTP)
+        @http = HTTP::Client.new
+      #else
+      #  @http = nil
+      #end
     end
 
     def market=(a_market)
