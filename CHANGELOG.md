@@ -1,3 +1,7 @@
+## 0.1.3
+- Dropped the HTTP gem and moved to Ruby's Net::HTTP
+- Merged a branch which adds the Condtion parameter.
+
 ## 0.1.2
 - Use Contributor RoleType, rather than Role.  RoleType uses lowercase, rather than capitalised. 
 

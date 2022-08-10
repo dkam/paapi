@@ -44,7 +44,7 @@ module Paapi
       request(op: :get_variations, payload: payload)
     end
 
-    # TODO: Currently we assume Keywords, but we need one of the follow: [Keywords Actor Artist Author Brand Title ]
+    # TODO: Currently we assume Keywords, but we need one of the following: [Keywords Actor Artist Author Brand Title ]
     def search_items(keywords: nil, **options )
       raise ArgumentError("Missing keywords") unless (options.keys | SEARCH_PARAMS).length.positive?
 
@@ -99,8 +99,14 @@ module Paapi
       headers['X-Amz-Content-Sha256']= signature.headers['x-amz-content-sha256']
       headers['Authorization'] = signature.headers['authorization']
       headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      Response.new( Client.post(url: endpoint, body: payload, headers: headers))
+      
+      if defined?(HTTP)
+        Response.new( HTTP.headers(headers).post(endpoint, json: payload ) )
+      else
+        Response.new( Client.post(url: endpoint, body: payload, headers: headers))
+      end
+      
+      Response.new(@http_client.headers(headers))
     end
 
     def self.post(url:, body:, headers:)
