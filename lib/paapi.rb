@@ -42,7 +42,7 @@ module Paapi
 
   MARKETPLACES = {
     au: Locale.new(:au, 'Australia',	          'webservices.amazon.com.au', 'us-west-2'),
-    br: Locale.new(:br, 'Brazil',	              'webservices.amazon.com.br'	 'us-east-1'),
+    br: Locale.new(:br, 'Brazil',	              'webservices.amazon.com.br', 'us-east-1'),
     ca: Locale.new(:ca, 'Canada',	              'webservices.amazon.ca',	   'us-east-1'),
     fr: Locale.new(:fr, 'France',	              'webservices.amazon.fr',	   'eu-west-1'),
     de: Locale.new(:de, 'Germany',	            'webservices.amazon.de',	   'eu-west-1'),
