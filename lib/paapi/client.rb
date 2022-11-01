@@ -1,4 +1,4 @@
-require 'net/http'
+require 'net/http/persistent'
 require 'aws-sigv4'
 
 module Paapi
@@ -10,9 +10,9 @@ module Paapi
     def initialize(access_key:   Paapi.access_key,
                    secret_key:   Paapi.secret_key,
                    partner_tag:  Paapi.partner_tag,
-                   market:       Paapi.market || DEFAULT_MARKET,
+                   market:       Paapi.market     || DEFAULT_MARKET,
                    condition:    Paapi.condition  || DEFAULT_CONDITION,
-                   resources:    Paapi.resources || DEFAULT_RESOURCES,
+                   resources:    Paapi.resources  || DEFAULT_RESOURCES,
                    partner_type: DEFAULT_PARTNER_TYPE
                   )
       raise ArgumentError unless MARKETPLACES.keys.include?(market.to_sym)
@@ -25,13 +25,7 @@ module Paapi
       self.market = market
       @partner_tag = partner_tag if !partner_tag.nil?
 
-      if defined?(HTTPX)
-        @http = HTTPX.plugin(:persistent)
-      elsif defined?(HTTP)
-        @http = HTTP::Client.new
-      else
-        @http = nil
-      end
+      @http = Net::HTTP::Persistent.new name: 'paapi'
     end
 
     def market=(a_market)
@@ -107,18 +101,29 @@ module Paapi
       headers['X-Amz-Content-Sha256']= signature.headers['x-amz-content-sha256']
       headers['Authorization'] = signature.headers['authorization']
       headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      Response.new( post(url: endpoint, body: payload, headers: headers))
+    end
+
+    def post(url:, body:, headers:)
+      puts "Not Deprecated"
+      uri = URI.parse(url)
+
+      post_request = Net::HTTP::Post.new(uri.path)
+      post_request.content_type = 'application/json; charset=UTF-8'
       
-      unless @http.nil?
-        Response.new( @http.with_headers(headers).post(endpoint, json: payload ) )
-      else
-        Response.new( Client.post(url: endpoint, body: payload, headers: headers))
-      end
+      headers.each { |k, v| post_request[k] = v }
+      post_request.body = body.to_json
+
+      #Client.post(client: @http, url: url, body: body, headers: headers)
+      http.request uri, post_request
 
     end
 
-    def self.post(url:, body:, headers:)
+    def self.post(url:, body:, headers:, client: nil)
+      puts "Deprecated"
       uri = URI.parse(url)
-      request = Net::HTTP::Post.new(uri)
+      request = client || Net::HTTP::Post.new(uri)
       request.content_type = 'application/json; charset=UTF-8'
       headers.each { |k, v| request[k] = v }
       request.body = body.to_json

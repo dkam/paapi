@@ -1,3 +1,6 @@
+## 0.1.7 ( Unreleased )
+- Add gem 'net-http-persistent' for connection persistance
+- Remove the code which would use other http clients if available
 ## 0.1.3
 - Dropped the HTTP gem and moved to Ruby's Net::HTTP
 - Merged a branch which adds the Condtion parameter.
