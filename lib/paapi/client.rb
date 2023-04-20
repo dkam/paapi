@@ -106,7 +106,6 @@ module Paapi
     end
 
     def post(url:, body:, headers:)
-      puts "Not Deprecated"
       uri = URI.parse(url)
 
       post_request = Net::HTTP::Post.new(uri.path)
@@ -115,21 +114,8 @@ module Paapi
       headers.each { |k, v| post_request[k] = v }
       post_request.body = body.to_json
 
-      #Client.post(client: @http, url: url, body: body, headers: headers)
       http.request uri, post_request
 
-    end
-
-    def self.post(url:, body:, headers:, client: nil)
-      puts "Deprecated"
-      uri = URI.parse(url)
-      request = client || Net::HTTP::Post.new(uri)
-      request.content_type = 'application/json; charset=UTF-8'
-      headers.each { |k, v| request[k] = v }
-      request.body = body.to_json
-      Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-        http.request(request)
-      end
     end
   end
 end

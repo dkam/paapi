@@ -87,6 +87,14 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 If you create a file `config.rb`, it will be loaded by `bin/console`, allowing you to configure keys and markets.
 
+```ruby
+Paapi.configure do |config|
+  config.access_key = 'access_key'
+  config.secret_key = 'secret_key'
+  config.partner_market =  {au: 'au_tag', us: 'us_tag', uk: 'uk_tag', ca: 'ca_tag_'}
+end
+```
+
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
