@@ -115,7 +115,6 @@ module Paapi
       post_request.body = body.to_json
 
       http.request uri, post_request
-
     end
   end
 end
