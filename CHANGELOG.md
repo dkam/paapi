@@ -1,4 +1,8 @@
-## 0.1.7 ( Unreleased )
+## 0.1.9 (Unreleased)
+- Fix bug allowing non-title case Request Parameters
+- Add the required PartnerTag and PartnerType key values to the search body request
+
+## 0.1.7
 - Add gem 'net-http-persistent' for connection persistance
 - Remove the code which would use other http clients if available
 ## 0.1.3

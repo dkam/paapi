@@ -8,7 +8,7 @@ require 'paapi/response'
 module Paapi
   class Error < StandardError; end
   class NotImplemented < StandardError; end
-  SEARCH_PARAMS = %i[keywords actor, artist, author, brand title].freeze
+  SEARCH_PARAMS = %i[Keywords Actor Artist Author Brand Title].freeze
   DEFAULT_PARTNER_TYPE = 'Associates'
   DEFAULT_MARKET = :us
   DEFAULT_CONDITION  = 'Any'

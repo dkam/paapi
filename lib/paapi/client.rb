@@ -37,7 +37,7 @@ module Paapi
     end
 
     def get_items(item_ids:, **options)
-      payload = { ItemIds: Array(item_ids), Resources:  @resources }.merge(options)
+      payload = { PartnerTag: partner_tag, PartnerType: 'Associates', ItemIds: Array(item_ids), Resources:  @resources }.merge(options)
       request(op: :get_items, payload: payload)
     end
 
@@ -47,12 +47,12 @@ module Paapi
     end
 
     # TODO: Currently we assume Keywords, but we need one of the following: [Keywords Actor Artist Author Brand Title ]
-    def search_items(keywords: nil, **options )
-      raise ArgumentError("Missing keywords") unless (options.keys | SEARCH_PARAMS).length.positive?
+    def search_items(**options )
+      raise ArgumentError.new("Missing keywords") unless (options.keys & SEARCH_PARAMS).length.positive?
 
       search_index = options.dig(:SearchIndex) ||'All'
 
-      payload = { Keywords: keywords, Resources:  @resources, ItemCount: 10, ItemPage: 1, SearchIndex: search_index }.merge(options)
+      payload = { PartnerTag: partner_tag, PartnerType: 'Associates', Resources:  @resources, ItemCount: 10, ItemPage: 1, SearchIndex: search_index }.merge(options)
 
       request(op: :search_items, payload: payload)
     end
