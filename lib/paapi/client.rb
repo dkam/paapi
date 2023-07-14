@@ -3,7 +3,6 @@ require 'aws-sigv4'
 
 module Paapi
   class Client
-
     attr_accessor :partner_tag, :marketplace, :resources, :condition
     attr_reader :partner_type, :access_key, :secret_key, :market, :http
 
@@ -21,7 +20,7 @@ module Paapi
       @secret_key = secret_key
       @partner_type = partner_type
       @resources = resources unless resources.nil?
-      @condition = condition  
+      @condition = condition
       self.market = market
       @partner_tag = partner_tag if !partner_tag.nil?
 
@@ -31,13 +30,13 @@ module Paapi
     def market=(a_market)
       @market = a_market
       @marketplace = MARKETPLACES[market.to_sym]
-      if !Paapi.partner_market.nil?
-        @partner_tag = Paapi.partner_market.dig(a_market.to_sym) || @partner_tag
-      end
+      return if Paapi.partner_market.nil?
+
+      @partner_tag = Paapi.partner_market[a_market.to_sym] || @partner_tag
     end
 
     def get_items(item_ids:, **options)
-      payload = { PartnerTag: partner_tag, PartnerType: 'Associates', ItemIds: Array(item_ids), Resources:  @resources }.merge(options)
+      payload = { PartnerTag: partner_tag, PartnerType: 'Associates', ItemIds: Array(item_ids), Resources: @resources }.merge(options)
       request(op: :get_items, payload: payload)
     end
 
@@ -110,7 +109,7 @@ module Paapi
 
       post_request = Net::HTTP::Post.new(uri.path)
       post_request.content_type = 'application/json; charset=UTF-8'
-      
+
       headers.each { |k, v| post_request[k] = v }
       post_request.body = body.to_json
 

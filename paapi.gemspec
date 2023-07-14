@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '>= 12.3.r3'
   spec.add_development_dependency 'minitest', '~> 5.0'
   spec.add_development_dependency 'byebug', '~> 11'
+  spec.add_development_dependency 'standard'
 
   spec.add_dependency 'aws-sigv4', '~> 1'
   spec.add_dependency 'net-http-persistent', '~> 4.0', '>= 4.0.1'
