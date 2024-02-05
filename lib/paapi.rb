@@ -9,7 +9,7 @@ module Paapi
   class Error < StandardError; end
 
   class NotImplemented < StandardError; end
-  SEARCH_PARAMS = %i[Keywords Actor Artist Author Brand Title].freeze
+  SEARCH_PARAMS = %w[Keywords Actor Artist Author Brand Title].freeze
   DEFAULT_PARTNER_TYPE = "Associates"
   DEFAULT_MARKET = :us
   DEFAULT_CONDITION = "Any"
