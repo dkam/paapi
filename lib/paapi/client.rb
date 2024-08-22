@@ -41,7 +41,7 @@ module Paapi
     end
 
     def get_items(item_ids:, **options)
-      payload = {PartnerTag: partner_tag, PartnerType: "Associates", ItemIds: Array(item_ids), Resources: @resources}.merge(options)
+      payload = {"PartnerTag" => partner_tag, "PartnerType" => "Associates", ItemIds: Array(item_ids), Resources: @resources}.merge(options)
       request(op: :get_items, payload: payload)
     end
 
