@@ -1,10 +1,10 @@
 # Paapi
 
+> **DEPRECATED:** Amazon is shutting down PA-API v5 on May 15, 2026 and replacing it with the [Creators API](https://webservices.amazon.com/paapi5/documentation/). This gem will stop working after that date. Please migrate to the [Vacuum gem (v5.0+)](https://github.com/hakanensari/vacuum), which already supports the new API.
+
 `paapi` is a slim wrapper around [Amazon's Product Advertising API 5.0](https://webservices.amazon.com/paapi5/documentation/).
 
 [![Build Status](https://travis-ci.org/dkam/paapi.svg?branch=master)](https://travis-ci.org/dkam/paapi)
-
-If this gem doesn't meet your needs, try the [Vacuum gem](https://github.com/hakanensari/vacuum).
 
 ## Installation
 

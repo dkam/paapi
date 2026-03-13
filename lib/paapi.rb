@@ -6,6 +6,13 @@ require "paapi/listing"
 require "paapi/response"
 
 module Paapi
+  DEPRECATION_MESSAGE = <<~MSG.freeze
+    [DEPRECATION] The paapi gem is deprecated and will stop working after May 15, 2026.
+    Amazon is replacing PA-API v5 with the Creators API.
+    Please switch to the vacuum gem (v5.0+): https://github.com/hakanensari/vacuum
+  MSG
+
+  warn DEPRECATION_MESSAGE
   class Error < StandardError; end
 
   class NotImplemented < StandardError; end
